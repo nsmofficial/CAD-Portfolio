@@ -39,18 +39,18 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
         </h2>
         <!-- Form for user input with various input fields.-->
         <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
-        <form>
+        <form id="contact-form">
           <div class="grid gap-4">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
                 id="hs-firstname-contacts"
                 label="First Name"
-                name="hs-firstname-contacts"
+                name="firstName"
               />
               <TextInput
                 id="hs-lastname-contacts"
                 label="Last Name"
-                name="hs-firstname-contacts"
+                name="lastName"
               />
             </div>
             <EmailContactInput id="hs-email-contacts" />
@@ -58,12 +58,37 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
             <TextAreaInput
               id="hs-about-contacts"
               label="Details"
-              name="hs-about-contacts"
+              name="message"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Send Message" />
+            <button
+              type="submit"
+              id="submit-btn"
+              class="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-orange-400 px-4 py-3 text-sm font-bold text-neutral-50 ring-zinc-500 transition duration-300 hover:bg-orange-500 focus:outline-hidden focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 dark:ring-zinc-200 dark:focus:outline-hidden"
+            >
+              <span id="btn-text">Send Message</span>
+              <span id="btn-loading" class="hidden">
+                <svg class="h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </span>
+            </button>
+          </div>
+
+          <!-- Success Message -->
+          <div id="success-message" class="mt-4 hidden rounded-lg bg-green-100 p-4 text-center text-green-700 dark:bg-green-900 dark:text-green-300">
+            <p class="font-bold">Thank you!</p>
+            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+          </div>
+
+          <!-- Error Message -->
+          <div id="error-message" class="mt-4 hidden rounded-lg bg-red-100 p-4 text-center text-red-700 dark:bg-red-900 dark:text-red-300">
+            <p class="font-bold">Oops!</p>
+            <p>Something went wrong. Please try again or email us directly.</p>
           </div>
 
           <div class="mt-3 text-center">
@@ -96,3 +121,78 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
     </div>
   </div>
 </section>
+
+<!-- EmailJS SDK -->
+<script is:inline>
+  // Dynamically load EmailJS SDK
+  (function() {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    script.onload = function() {
+      // Initialize EmailJS after script loads
+      emailjs.init("A94odtroq3ba8Sc6j");
+      
+      const form = document.getElementById("contact-form");
+      const submitBtn = document.getElementById("submit-btn");
+      const btnText = document.getElementById("btn-text");
+      const btnLoading = document.getElementById("btn-loading");
+      const successMessage = document.getElementById("success-message");
+      const errorMessage = document.getElementById("error-message");
+
+      if (form) {
+        form.addEventListener("submit", function(event) {
+          event.preventDefault();
+
+          // Hide previous messages
+          successMessage.classList.add("hidden");
+          errorMessage.classList.add("hidden");
+
+          // Show loading state
+          btnText.classList.add("hidden");
+          btnLoading.classList.remove("hidden");
+          submitBtn.disabled = true;
+
+          // Get form values
+          const firstName = document.getElementById("hs-firstname-contacts").value;
+          const lastName = document.getElementById("hs-lastname-contacts").value;
+          const email = document.getElementById("hs-email-contacts").value;
+          const phone = document.getElementById("hs-phone-number").value;
+          const message = document.getElementById("hs-about-contacts").value;
+
+          // Prepare template parameters
+          const templateParams = {
+            from_name: firstName + " " + lastName,
+            from_email: email,
+            phone: phone,
+            message: message
+          };
+
+          // Send email using EmailJS
+          emailjs.send("service_8a11hjo", "template_viwawmt", templateParams)
+            .then(function(response) {
+              console.log("SUCCESS!", response.status, response.text);
+              
+              // Show success message
+              successMessage.classList.remove("hidden");
+              
+              // Reset form
+              form.reset();
+            })
+            .catch(function(error) {
+              console.log("FAILED...", error);
+              
+              // Show error message
+              errorMessage.classList.remove("hidden");
+            })
+            .finally(function() {
+              // Reset button state
+              btnText.classList.remove("hidden");
+              btnLoading.classList.add("hidden");
+              submitBtn.disabled = false;
+            });
+        });
+      }
+    };
+    document.head.appendChild(script);
+  })();
+</script>
