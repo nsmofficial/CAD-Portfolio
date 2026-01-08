@@ -1,0 +1,108 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `About Us | ${SITE.title}`;
+const metaDescription =
+  "Learn more about our company, our mission, and the team behind our success.";
+const ogTitle = "About Us | ScrewFast";
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={metaDescription}
+  customOgTitle={ogTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://screwfast.uk/about",
+    url: "https://screwfast.uk/about",
+    name: "About Us | ScrewFast",
+    description:
+      "Learn more about our company, our mission, and the team behind our success.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://screwfast.uk",
+      name: "ScrewFast",
+      description:
+        "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-2xl lg:max-w-5xl">
+      <div class="text-center">
+        <h1
+          class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+        >
+          About Us
+        </h1>
+        <p class="mt-4 text-pretty text-neutral-600 dark:text-neutral-400">
+          Welcome to our company. We are dedicated to providing the best products and services to our customers.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
+        <!-- Our Mission -->
+        <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
+          <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+            Our Mission
+          </h2>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            Our mission is to deliver exceptional quality and value in everything we do. We strive to exceed customer expectations and build lasting relationships through trust and integrity.
+          </p>
+        </div>
+
+        <!-- Our Vision -->
+        <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
+          <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+            Our Vision
+          </h2>
+          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+            We envision becoming a leader in our industry by continuously innovating and adapting to meet the evolving needs of our customers and the market.
+          </p>
+        </div>
+      </div>
+
+      <!-- Our Values -->
+      <div class="mt-12">
+        <h2 class="text-center text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+          Our Values
+        </h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
+              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Quality</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We never compromise on quality in our products and services.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
+              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Teamwork</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We believe in the power of collaboration and working together.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
+              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Innovation</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We continuously seek new and better ways to serve our customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
