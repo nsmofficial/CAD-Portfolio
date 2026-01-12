@@ -1,12 +1,17 @@
 ---
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
 import { SITE } from "@data/constants";
+
+// Import images
+import heroImage from "@images/hero-image.avif";
+import constructionWorkers from "@images/construction-workers.avif";
 
 const pageTitle: string = `About Us | ${SITE.title}`;
 const metaDescription =
-  "Learn more about our company, our mission, and the team behind our success.";
-const ogTitle = "About Us | ScrewFast";
+  "Meet the founders and learn about our mission to bridge the gap between digital design and physical reality through innovative engineering solutions.";
+const ogTitle = "About Us | Engineering & Robotics Experts";
 ---
 
 <MainLayout
@@ -18,90 +23,277 @@ const ogTitle = "About Us | ScrewFast";
     "@type": "WebPage",
     "@id": "https://screwfast.uk/about",
     url: "https://screwfast.uk/about",
-    name: "About Us | ScrewFast",
+    name: "About Us",
     description:
-      "Learn more about our company, our mission, and the team behind our success.",
+      "Meet the founders and learn about our mission to bridge the gap between digital design and physical reality.",
     isPartOf: {
       "@type": "WebSite",
       url: "https://screwfast.uk",
       name: "ScrewFast",
       description:
-        "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
+        "Engineering solutions for the autonomous age - CAD, FEA, Robotics, and 3D Printing services.",
     },
     inLanguage: "en-US",
   }}
 >
+  <!-- Hero Section -->
   <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-    <div class="mx-auto max-w-2xl lg:max-w-5xl">
-      <div class="text-center">
-        <h1
-          class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+    <div class="mx-auto max-w-2xl text-center">
+      <h1
+        class="text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-5xl md:leading-tight"
+      >
+        About Us
+      </h1>
+      <p class="mt-4 text-lg text-pretty text-neutral-600 dark:text-neutral-400">
+        Engineering the future, one project at a time
+      </p>
+    </div>
+  </section>
+
+  <!-- Founders Section -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center mb-10">
+        <h2
+          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-3xl"
         >
-          About Us
-        </h1>
-        <p class="mt-4 text-pretty text-neutral-600 dark:text-neutral-400">
-          Welcome to our company. We are dedicated to providing the best products and services to our customers.
+          Meet the Founders
+        </h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+          The engineering minds behind our innovation
         </p>
       </div>
 
-      <div class="mt-12 grid gap-8 lg:grid-cols-2">
-        <!-- Our Mission -->
-        <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
-          <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
-            Our Mission
+      <div class="grid gap-8 lg:grid-cols-2 items-center">
+        <!-- Founders Image Placeholder -->
+        <div class="relative">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
+            <!-- Placeholder for founders image -->
+            <div class="text-center p-8">
+              <svg class="mx-auto h-24 w-24 text-neutral-400 dark:text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <p class="mt-4 text-neutral-500 dark:text-neutral-400 text-sm">Founders Image Placeholder</p>
+              <p class="mt-1 text-neutral-400 dark:text-neutral-500 text-xs">Replace with your photo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founders Info -->
+        <div class="space-y-6">
+          <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
+            <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+              [Founder Name 1]
+            </h3>
+            <p class="text-sm text-orange-500 font-medium">Co-Founder & Lead Engineer</p>
+            <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+              Specializing in mechanical design and FEA analysis with expertise in parametric CAD modeling and simulation. Passionate about creating production-ready designs optimized for manufacturing.
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
+            <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+              [Founder Name 2]
+            </h3>
+            <p class="text-sm text-orange-500 font-medium">Co-Founder & Robotics Lead</p>
+            <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+              Expert in robotics development, ROS 2 implementation, and embedded systems. Focused on building intelligent automation solutions from concept to deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="grid gap-12 lg:grid-cols-2 items-center">
+        <div>
+          <h2
+            class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-3xl"
+          >
+            Our Story
           </h2>
-          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
-            Our mission is to deliver exceptional quality and value in everything we do. We strive to exceed customer expectations and build lasting relationships through trust and integrity.
+          <p class="mt-4 text-neutral-600 dark:text-neutral-400">
+            What started as a shared passion for engineering and robotics has evolved into a full-service design and development studio. We founded this company with a simple belief: that great engineering should be accessible to innovators of all sizes.
+          </p>
+          <p class="mt-4 text-neutral-600 dark:text-neutral-400">
+            With backgrounds spanning mechanical engineering, robotics, and embedded systems, we've worked on everything from consumer products to industrial automation. Today, we bring that expertise to every project, ensuring our clients receive solutions that are not just functional, but exceptional.
+          </p>
+        </div>
+        <div>
+          <Image
+            class="w-full rounded-xl object-cover aspect-[4/3]"
+            src={heroImage}
+            alt="Engineering workspace"
+            format={"avif"}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <!-- Our Mission -->
+        <div class="rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-8 text-white">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white/20">
+            <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h2 class="mt-6 text-2xl font-bold">Our Mission</h2>
+          <p class="mt-4 text-white/90">
+            To bridge the gap between digital design and physical reality. We empower innovators, startups, and established companies with the technical expertise needed to bring their ideas to life—faster, smarter, and ready for production.
           </p>
         </div>
 
         <!-- Our Vision -->
-        <div class="rounded-xl bg-neutral-100 p-6 dark:bg-neutral-800">
-          <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
-            Our Vision
-          </h2>
-          <p class="mt-3 text-neutral-600 dark:text-neutral-400">
-            We envision becoming a leader in our industry by continuously innovating and adapting to meet the evolving needs of our customers and the market.
+        <div class="rounded-2xl bg-neutral-900 p-8 text-white dark:bg-neutral-800">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white/10">
+            <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h2 class="mt-6 text-2xl font-bold">Our Vision</h2>
+          <p class="mt-4 text-white/80">
+            To become the go-to engineering partner for the autonomous age—where every machine, robot, and product we help create pushes the boundaries of what's possible while remaining practical and manufacturable.
           </p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Our Values -->
-      <div class="mt-12">
-        <h2 class="text-center text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+  <!-- What We Do Section -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center mb-12">
+        <h2
+          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-3xl"
+        >
+          What We Do
+        </h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          End-to-end engineering services that take your ideas from concept to reality
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="group rounded-xl border border-neutral-200 p-6 transition-all hover:border-orange-500 hover:shadow-lg dark:border-neutral-700 dark:hover:border-orange-500">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-500 dark:bg-orange-900/30">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">FEA & CFD</h3>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Stress analysis, thermal simulation, and fluid dynamics optimization</p>
+        </div>
+
+        <div class="group rounded-xl border border-neutral-200 p-6 transition-all hover:border-orange-500 hover:shadow-lg dark:border-neutral-700 dark:hover:border-orange-500">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-500 dark:bg-orange-900/30">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">CAD Modeling</h3>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Parametric design, assemblies, and DFM-optimized models</p>
+        </div>
+
+        <div class="group rounded-xl border border-neutral-200 p-6 transition-all hover:border-orange-500 hover:shadow-lg dark:border-neutral-700 dark:hover:border-orange-500">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-500 dark:bg-orange-900/30">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Robotics</h3>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">ROS 2 development, navigation, and embedded systems</p>
+        </div>
+
+        <div class="group rounded-xl border border-neutral-200 p-6 transition-all hover:border-orange-500 hover:shadow-lg dark:border-neutral-700 dark:hover:border-orange-500">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-500 dark:bg-orange-900/30">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">3D Printing</h3>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Multi-material prototyping and production parts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center mb-12">
+        <h2
+          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-3xl"
+        >
           Our Values
         </h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="text-center">
-            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
-              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Quality</h3>
-            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We never compromise on quality in our products and services.</p>
-          </div>
+      </div>
 
-          <div class="text-center">
-            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
-              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-            </div>
-            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Teamwork</h3>
-            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We believe in the power of collaboration and working together.</p>
+      <div class="grid gap-8 sm:grid-cols-3">
+        <div class="text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
           </div>
-
-          <div class="text-center">
-            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900">
-              <svg class="h-6 w-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="mt-4 font-bold text-neutral-800 dark:text-neutral-200">Innovation</h3>
-            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">We continuously seek new and better ways to serve our customers.</p>
-          </div>
+          <h3 class="mt-5 text-lg font-bold text-neutral-800 dark:text-neutral-200">Engineering Excellence</h3>
+          <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+            Every design we create is validated, optimized, and production-ready. We don't cut corners.
+          </p>
         </div>
+
+        <div class="text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-neutral-800 dark:text-neutral-200">Clear Communication</h3>
+          <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+            We keep you informed at every stage. No jargon, no surprises—just transparent collaboration.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-neutral-800 dark:text-neutral-200">Rapid Delivery</h3>
+          <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+            Time is critical. We work efficiently to deliver quality results without unnecessary delays.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-3xl text-center">
+      <div class="rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 p-10 text-white shadow-xl">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Start Your Project?</h2>
+        <p class="mt-4 text-white/90">
+          Whether you have a detailed specification or just an idea, we're here to help bring it to life.
+        </p>
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-orange-600 shadow-md transition hover:bg-neutral-100"
+        >
+          Get in Touch
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
       </div>
     </div>
   </section>

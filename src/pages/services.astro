@@ -15,6 +15,7 @@ import aerialView from "@images/aerial-view.avif";
 import usingTools from "@images/using-tools.avif";
 import progressBuilding from "@images/progress-building.avif";
 import underConstruction from "@images/under-construction.avif";
+import automatedTools from "@images/automated-tools.avif";
 import { SITE } from "@data/constants";
 
 interface Article {
@@ -33,61 +34,82 @@ interface Article {
   imgTwoAlt?: string;
 }
 
-const articles: Article[] = [
+// Main 4 Services
+const mainServices: Article[] = [
   {
     isRightSection: true,
-    title: "Precision Mechanical Design",
+    title: "FEA Analysis & CFD",
     subTitle:
-      "We go beyond simple drafting. Specializing in parametric modeling and advanced surface design, we create fully editable, production-ready CAD files. Whether you need complex sheet metal enclosures or ergonomic consumer parts, our designs are optimized for manufacturing constraints (DFM) from day one.",
+      "Validate your engineering before cutting a single piece of metal. We perform rigorous Finite Element Analysis (FEA) including static stress, thermal, and vibration analysis to predict failure points in the digital world. Our Computational Fluid Dynamics (CFD) simulations optimize airflow, heat dissipation, and fluid behavior. This process ensures your designs meet required Safety Factors while optimizing weight and material costs.",
     single: false,
-    imgOne: blueprints,
-    imgOneAlt: "Blueprints and digital tablet with construction plans.",
-    imgTwo: personWorking,
-    imgTwoAlt: "Person working in the office",
-  },
-  {
-    isRightSection: false,
-    title: "Finite Element Analysis (FEA)",
-    subTitle:
-      "Validate your engineering before cutting a single piece of metal. We perform rigorous static stress, thermal, and vibration analysis to predict failure points in the digital world. This process ensures your machinery meets required Safety Factors while optimizing weight and material costs.",
-    img: beforeAfter,
-    imgAlt: "Construction site before and after",
+    imgOne: beforeAfter,
+    imgOneAlt: "FEA stress analysis visualization",
+    imgTwo: aerialView,
+    imgTwoAlt: "CFD simulation results",
     btnExists: true,
     btnTitle: "Learn More",
     btnURL: "#",
   },
   {
-    isRightSection: true,
-    title: "Intelligent Control Systems",
+    isRightSection: false,
+    title: "CAD Modeling",
     subTitle:
-      "Hardware is useless without a brain. We develop modular software stacks using the Robot Operating System (ROS 2). Our expertise covers autonomous navigation (Nav2), robotic manipulation (Movelt), and writing custom drivers to interface sensors with embedded controllers like the ESP32 and Jetson Nano.",
+      "We go beyond simple drafting. Specializing in parametric modeling and advanced surface design, we create fully editable, production-ready CAD files. Whether you need complex sheet metal enclosures, ergonomic consumer parts, or intricate mechanical assemblies, our designs are optimized for manufacturing constraints (DFM) from day one.",
+    img: blueprints,
+    imgAlt: "Blueprints and digital tablet with CAD designs",
+    btnExists: true,
+    btnTitle: "View Portfolio",
+    btnURL: "/blog",
+  },
+  {
+    isRightSection: true,
+    title: "Robotics Project Development",
+    subTitle:
+      "From concept to deployment, we build complete robotic systems. We develop modular software stacks using the Robot Operating System (ROS 2), covering autonomous navigation (Nav2), robotic manipulation (MoveIt), and custom drivers for embedded controllers like ESP32 and Jetson Nano. Whether it's an AGV, robotic arm, or custom automation solution, we deliver end-to-end robotics development.",
     single: false,
     imgOne: constructionWorkers,
-    imgOneAlt: "Construction workers orchestrating a project",
-    imgTwo: aerialView,
-    imgTwoAlt: "Aerial view of managed construction",
+    imgOneAlt: "Robotics development team",
+    imgTwo: personWorking,
+    imgTwoAlt: "Programming robotic systems",
+    btnExists: true,
+    btnTitle: "Explore Projects",
+    btnURL: "/blog",
   },
   {
     isRightSection: false,
-    title: "Rapid Prototyping & DFM",
+    title: "3D Printing Services",
     subTitle:
-      "We bridge the gap between digital simulation and physical reality. Using in-house 3D printing and a network of local CNC partners, we validate designs fast. Every component we draw is engineered for Manufacturing (DFM). ensuring that your prototype can actually be mass-produced cost-effectively.",
-    img: usingTools,
-    imgAlt:
-      "Man in orange and black vest wearing white helmet holding yellow and black power tool",
+      "Transform your concepts into tangible prototypes with our comprehensive 3D printing solutions. We work with a wide range of filaments including PLA for rapid prototyping, ABS for durable functional parts, PETG for chemical resistance, TPU for flexible components, and Nylon for high-strength applications. Our service covers CAD design optimization, slicing configuration, multi-material printing, and post-processing finishing.",
+    img: automatedTools,
+    imgAlt: "3D printer creating precision parts",
+    btnExists: true,
+    btnTitle: "Get a Quote",
+    btnURL: "/contact",
   },
+];
+
+// Other Services
+const otherServices: Article[] = [
   {
     isRightSection: true,
+    title: "Rapid Prototyping & DFM",
+    subTitle:
+      "We bridge the gap between digital simulation and physical reality. Using in-house 3D printing and a network of local CNC partners, we validate designs fast. Every component we draw is engineered for Manufacturing (DFM), ensuring that your prototype can actually be mass-produced cost-effectively.",
+    single: false,
+    imgOne: usingTools,
+    imgOneAlt: "Prototyping tools and equipment",
+    imgTwo: progressBuilding,
+    imgTwoAlt: "Prototype development in progress",
+  },
+  {
+    isRightSection: false,
     title: "Engineered for Impact",
     subTitle:
-      "We don't just prioritize aesthetics, we prioritize metrics. From reducing Bill of Materials (BOM) costs to accelerating prototyping cycles, our value is measurable.",
-    single: false,
-    imgOne: progressBuilding,
-    imgOneAlt: "In progress building structure",
-    imgTwo: underConstruction,
-    imgTwoAlt: "Brown and gray building under construction",
+      "We don't just prioritize aesthetics, we prioritize metrics. From reducing Bill of Materials (BOM) costs to accelerating prototyping cycles, our value is measurable. We optimize your designs for cost-effectiveness without compromising quality.",
+    img: underConstruction,
+    imgAlt: "Engineering optimization process",
     btnExists: true,
-    btnTitle: "Read more",
+    btnTitle: "Read More",
     btnURL: "#",
   },
 ];
@@ -136,8 +158,51 @@ const ogTitle = "Expert Consultation Services | ScrewFast";
   RightSection can also conditionally render one or two images based on the 'single' property.
   If 'single' is true, it displays one image, otherwise it displays two.
   */}
+  {/* Main Services */}
   {
-    articles.map((article) => {
+    mainServices.map((article) => {
+      return article.isRightSection ? (
+        <RightSection
+          title={article.title}
+          subTitle={article.subTitle}
+          single={article.single}
+          imgOne={article.imgOne}
+          imgOneAlt={article.imgOneAlt}
+          imgTwo={article.imgTwo}
+          imgTwoAlt={article.imgTwoAlt}
+          btnExists={article.btnExists}
+          btnTitle={article.btnTitle}
+          btnURL={article.btnURL}
+        />
+      ) : (
+        <LeftSection
+          title={article.title}
+          subTitle={article.subTitle}
+          img={article.img}
+          imgAlt={article.imgAlt}
+          btnExists={article.btnExists}
+          btnTitle={article.btnTitle}
+          btnURL={article.btnURL}
+        />
+      );
+    })
+  }
+
+  {/* Other Services Section Header */}
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+        Other Services
+      </h2>
+      <p class="mt-3 text-neutral-600 dark:text-neutral-400">
+        Additional expertise to support your engineering projects
+      </p>
+    </div>
+  </section>
+
+  {/* Other Services */}
+  {
+    otherServices.map((article) => {
       return article.isRightSection ? (
         <RightSection
           title={article.title}

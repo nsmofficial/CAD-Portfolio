@@ -65,7 +65,7 @@ interface Props {
       <div class="mt-8 grid grid-cols-2 gap-4">
         <!-- First image in a two-image layout -->
         <Image
-          class="w-full rounded-xl"
+          class="w-full rounded-xl object-cover aspect-video"
           src={imgOne}
           alt={imgOneAlt}
           draggable={"false"}
@@ -73,7 +73,7 @@ interface Props {
         />
         <!-- Second image in a two-image layout -->
         <Image
-          class="mt-4 w-full rounded-xl lg:mt-10"
+          class="mt-4 w-full rounded-xl object-cover aspect-[3/4] lg:mt-10"
           src={imgTwo}
           alt={imgTwoAlt}
           draggable={"false"}

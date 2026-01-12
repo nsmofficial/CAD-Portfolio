@@ -1,0 +1,282 @@
+---
+// Import necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import { SITE } from "@data/constants";
+
+// Import images
+import blueprints from "@images/blueprints-image.avif";
+import personWorking from "@images/person-working.avif";
+import beforeAfter from "@images/before-after.avif";
+import constructionWorkers from "@images/construction-workers.avif";
+import aerialView from "@images/aerial-view.avif";
+import usingTools from "@images/using-tools.avif";
+import progressBuilding from "@images/progress-building.avif";
+import underConstruction from "@images/under-construction.avif";
+import automatedTools from "@images/automated-tools.avif";
+import heroImage from "@images/hero-image.avif";
+import constructionImage from "@images/construction-image.avif";
+import featuresImage from "@images/features-image.avif";
+
+// Define all projects with their details
+const allProjects: Record<string, {
+  title: string;
+  category: string;
+  description: string;
+  fullDescription: string;
+  image: any;
+  imageAlt: string;
+}> = {
+  // FEA Projects
+  "fea/structural-stress-analysis": {
+    title: "Structural Stress Analysis",
+    category: "FEA Analysis & CFD",
+    description: "Complete FEA of industrial crane arm with load distribution and safety factor optimization.",
+    fullDescription: "This project involved comprehensive Finite Element Analysis of an industrial crane arm designed for heavy-duty material handling. We performed static stress analysis under maximum load conditions, identified critical stress concentration areas, and optimized the design to achieve a safety factor of 2.5 while reducing material usage by 15%. The analysis included multiple load cases, fatigue assessment, and detailed documentation for certification purposes.",
+    image: beforeAfter,
+    imageAlt: "FEA stress analysis visualization",
+  },
+  "fea/thermal-management-system": {
+    title: "Thermal Management System",
+    category: "FEA Analysis & CFD",
+    description: "CFD simulation for electronics enclosure cooling with optimized airflow design.",
+    fullDescription: "We designed and validated a thermal management system for a high-power electronics enclosure using Computational Fluid Dynamics. The simulation included conjugate heat transfer analysis, airflow optimization through strategic vent placement, and fan curve integration. The final design achieved a 25°C reduction in peak component temperature while maintaining IP54 ingress protection rating.",
+    image: aerialView,
+    imageAlt: "Thermal simulation results",
+  },
+  "fea/vibration-analysis": {
+    title: "Vibration Analysis",
+    category: "FEA Analysis & CFD",
+    description: "Modal analysis and vibration study for rotating machinery components.",
+    fullDescription: "Comprehensive modal and harmonic response analysis for a high-speed rotating machinery assembly. We identified natural frequencies and mode shapes to prevent resonance conditions during operation. The study included Campbell diagram generation, critical speed analysis, and recommendations for damping improvements that extended component life by 40%.",
+    image: progressBuilding,
+    imageAlt: "Vibration analysis model",
+  },
+  
+  // CAD Projects
+  "cad/industrial-machine-assembly": {
+    title: "Industrial Machine Assembly",
+    category: "CAD Modeling",
+    description: "Complete parametric CAD model with 500+ parts for automated packaging system.",
+    fullDescription: "Full parametric CAD development of an automated packaging system featuring over 500 individual components. The design included conveyor systems, robotic pick-and-place mechanisms, safety guarding, and human-machine interfaces. All components were designed for manufacturability with proper tolerancing, and the assembly included motion simulation to verify clearances and cycle times.",
+    image: blueprints,
+    imageAlt: "CAD assembly model",
+  },
+  "cad/consumer-product-design": {
+    title: "Consumer Product Design",
+    category: "CAD Modeling",
+    description: "Ergonomic product enclosure designed for injection molding with DFM optimization.",
+    fullDescription: "Complete industrial design and CAD modeling of a consumer electronics enclosure. The project involved ergonomic studies, aesthetic surface modeling, and design for injection molding. We optimized wall thicknesses, draft angles, and gate locations to minimize cycle time and ensure consistent part quality. The design achieved a 20% reduction in material usage compared to the original concept.",
+    image: personWorking,
+    imageAlt: "Product design CAD",
+  },
+  "cad/sheet-metal-enclosure": {
+    title: "Sheet Metal Enclosure",
+    category: "CAD Modeling",
+    description: "Complex sheet metal design with proper bend allowances and manufacturing drawings.",
+    fullDescription: "Design of a modular sheet metal enclosure system for industrial control equipment. The project included proper K-factor calculations for various material grades, strategic bend sequencing to avoid tooling interference, and complete manufacturing drawing packages. We also designed custom press-fit hardware integration and EMI shielding provisions.",
+    image: heroImage,
+    imageAlt: "Sheet metal CAD design",
+  },
+  "cad/mechanical-linkage-system": {
+    title: "Mechanical Linkage System",
+    category: "CAD Modeling",
+    description: "Kinematic linkage design with motion simulation and interference checking.",
+    fullDescription: "Development of a four-bar linkage mechanism for an automated sorting application. The design process included kinematic synthesis to achieve the required output motion, dynamic simulation to verify forces and accelerations, and interference checking throughout the full range of motion. The final design achieved smooth operation at 120 cycles per minute.",
+    image: featuresImage,
+    imageAlt: "Linkage mechanism CAD",
+  },
+  
+  // Robotics Projects
+  "robotics/autonomous-mobile-robot": {
+    title: "Autonomous Mobile Robot",
+    category: "Robotics Project Development",
+    description: "ROS 2 based AGV with Nav2 navigation stack and custom obstacle avoidance.",
+    fullDescription: "Complete development of an Autonomous Mobile Robot (AMR) for warehouse logistics. The robot runs on ROS 2 Humble with Nav2 for autonomous navigation, including SLAM-based mapping, dynamic path planning, and multi-robot coordination. We integrated LiDAR, depth cameras, and ultrasonic sensors for robust obstacle detection in dynamic environments.",
+    image: constructionWorkers,
+    imageAlt: "Mobile robot project",
+  },
+  "robotics/6-dof-robotic-arm": {
+    title: "6-DOF Robotic Arm",
+    category: "Robotics Project Development",
+    description: "Industrial manipulator with MoveIt integration and custom gripper design.",
+    fullDescription: "Design and integration of a 6-degree-of-freedom robotic manipulator for pick-and-place operations. The project included mechanical design of the arm structure, motor sizing and selection, custom end-effector design, and complete MoveIt 2 integration for motion planning. The system achieved 0.5mm repeatability and supports force-controlled insertion tasks.",
+    image: automatedTools,
+    imageAlt: "Robotic arm project",
+  },
+  "robotics/vision-guided-pick-place": {
+    title: "Vision-Guided Pick & Place",
+    category: "Robotics Project Development",
+    description: "Computer vision system with object detection for automated sorting application.",
+    fullDescription: "Development of a vision-guided robotic sorting system using deep learning-based object detection. The system uses industrial cameras with custom-trained YOLO models to identify and classify objects on a moving conveyor. Integration with a delta robot enables picking at rates exceeding 60 picks per minute with 99.5% accuracy.",
+    image: constructionImage,
+    imageAlt: "Vision system project",
+  },
+  
+  // 3D Printing Projects
+  "3d-printing/functional-prototype": {
+    title: "Functional Prototype",
+    category: "3D Printing",
+    description: "Multi-material prototype with living hinges and snap-fit features in PETG and TPU.",
+    fullDescription: "Rapid prototyping of a consumer product enclosure using multi-material FDM printing. The design featured TPU living hinges for the battery door, PETG structural components for durability, and integrated snap-fit features for tool-less assembly. Multiple iterations were completed in under a week, significantly accelerating the design validation process.",
+    image: usingTools,
+    imageAlt: "3D printed prototype",
+  },
+  "3d-printing/production-tooling": {
+    title: "Production Tooling",
+    category: "3D Printing",
+    description: "Custom jigs and fixtures printed in Nylon for manufacturing assembly line.",
+    fullDescription: "Design and production of custom manufacturing fixtures using industrial-grade Nylon PA12. The tooling included assembly jigs, inspection fixtures, and cable routing guides. 3D printing enabled complex geometries impossible with traditional machining, and the fixtures achieved over 10,000 cycles without degradation.",
+    image: underConstruction,
+    imageAlt: "3D printed tooling",
+  },
+  "3d-printing/concept-model": {
+    title: "Concept Model",
+    category: "3D Printing",
+    description: "High-detail concept model with post-processing finish for client presentation.",
+    fullDescription: "Production of a high-fidelity concept model for investor presentation. The model was printed in high-resolution resin, then professionally finished with automotive-grade primer, paint, and clear coat. Additional details included working LED indicators and magnetic assembly for demonstrating internal components.",
+    image: progressBuilding,
+    imageAlt: "3D printed concept model",
+  },
+  
+  // Other Projects
+  "other/embedded-system-design": {
+    title: "Embedded System Design",
+    category: "Other Projects",
+    description: "Custom PCB design with ESP32 for IoT sensor network application.",
+    fullDescription: "Complete embedded system development for an industrial IoT sensor network. The project included custom PCB design with ESP32 microcontroller, multi-sensor integration (temperature, humidity, vibration), LoRa wireless communication, and battery management system. The firmware was developed in C++ with OTA update capability and MQTT-based cloud connectivity.",
+    image: aerialView,
+    imageAlt: "Embedded system project",
+  },
+  "other/technical-documentation": {
+    title: "Technical Documentation",
+    category: "Other Projects",
+    description: "Complete engineering documentation package with assembly and maintenance manuals.",
+    fullDescription: "Development of comprehensive technical documentation for a medical device manufacturer. The package included assembly procedures with visual work instructions, maintenance schedules, troubleshooting guides, and spare parts catalogs. All documentation was created following IEC 82079 standards with multi-language support.",
+    image: blueprints,
+    imageAlt: "Technical documentation",
+  },
+  "other/reverse-engineering": {
+    title: "Reverse Engineering",
+    category: "Other Projects",
+    description: "3D scanning and CAD reconstruction of legacy parts for manufacturing.",
+    fullDescription: "Reverse engineering of legacy mechanical components with no existing documentation. Using industrial 3D scanning, we captured precise geometry and reconstructed fully parametric CAD models. The project enabled reproduction of obsolete spare parts and included material analysis to ensure functional equivalence with original components.",
+    image: beforeAfter,
+    imageAlt: "Reverse engineering project",
+  },
+};
+
+// Get the category and slug from URL params
+export function getStaticPaths() {
+  return [
+    // FEA Projects
+    { params: { category: "fea", slug: "structural-stress-analysis" } },
+    { params: { category: "fea", slug: "thermal-management-system" } },
+    { params: { category: "fea", slug: "vibration-analysis" } },
+    // CAD Projects
+    { params: { category: "cad", slug: "industrial-machine-assembly" } },
+    { params: { category: "cad", slug: "consumer-product-design" } },
+    { params: { category: "cad", slug: "sheet-metal-enclosure" } },
+    { params: { category: "cad", slug: "mechanical-linkage-system" } },
+    // Robotics Projects
+    { params: { category: "robotics", slug: "autonomous-mobile-robot" } },
+    { params: { category: "robotics", slug: "6-dof-robotic-arm" } },
+    { params: { category: "robotics", slug: "vision-guided-pick-place" } },
+    // 3D Printing Projects
+    { params: { category: "3d-printing", slug: "functional-prototype" } },
+    { params: { category: "3d-printing", slug: "production-tooling" } },
+    { params: { category: "3d-printing", slug: "concept-model" } },
+    // Other Projects
+    { params: { category: "other", slug: "embedded-system-design" } },
+    { params: { category: "other", slug: "technical-documentation" } },
+    { params: { category: "other", slug: "reverse-engineering" } },
+  ];
+}
+
+const { category, slug } = Astro.params;
+const projectKey = `${category}/${slug}`;
+const project = allProjects[projectKey];
+
+if (!project) {
+  return Astro.redirect("/404");
+}
+
+const pageTitle = `${project.title} | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={project.description}
+  customOgTitle={project.title}
+>
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto max-w-4xl">
+      <!-- Back Button -->
+      <a
+        href="/blog"
+        class="mb-8 inline-flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Projects
+      </a>
+
+      <!-- Category Badge -->
+      <div class="mb-4">
+        <span class="inline-flex items-center rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+          {project.category}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl lg:text-5xl">
+        {project.title}
+      </h1>
+
+      <!-- Short Description -->
+      <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        {project.description}
+      </p>
+
+      <!-- Project Image -->
+      <div class="mt-8 overflow-hidden rounded-2xl">
+        <Image
+          class="w-full object-cover aspect-video"
+          src={project.image}
+          alt={project.imageAlt}
+          format={"avif"}
+        />
+      </div>
+
+      <!-- Full Description -->
+      <div class="mt-10">
+        <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+          Project Details
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+          {project.fullDescription}
+        </p>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="mt-12 rounded-xl bg-neutral-100 p-8 dark:bg-neutral-800">
+        <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+          Interested in a Similar Project?
+        </h3>
+        <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+          Let's discuss how we can help bring your engineering vision to life.
+        </p>
+        <a
+          href="/contact"
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white transition hover:bg-orange-600"
+        >
+          Get in Touch
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
