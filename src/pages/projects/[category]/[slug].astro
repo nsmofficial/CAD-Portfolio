@@ -28,89 +28,89 @@ const allProjects: Record<string, {
   imageAlt: string;
 }> = {
   // FEA Projects
-  "fea/structural-stress-analysis": {
-    title: "Structural Stress Analysis",
-    category: "FEA Analysis & CFD",
-    description: "Complete FEA of industrial crane arm with load distribution and safety factor optimization.",
-    fullDescription: "This project involved comprehensive Finite Element Analysis of an industrial crane arm designed for heavy-duty material handling. We performed static stress analysis under maximum load conditions, identified critical stress concentration areas, and optimized the design to achieve a safety factor of 2.5 while reducing material usage by 15%. The analysis included multiple load cases, fatigue assessment, and detailed documentation for certification purposes.",
+  "fea/ip67-passive-cooling": {
+    title: "IP67 Passive Cooling for 5G IoT Gateway",
+    category: "CFD / Electronics Cooling",
+    description: "Optimized the thermal architecture for a fanless 15W outdoor gateway. Performed Conjugate Heat Transfer (CHT) analysis to validate natural convection efficiency.",
+    fullDescription: "This project addressed the critical challenge of thermal management for a fanless 15W 5G IoT gateway designed for harsh outdoor environments. The device houses high-power processing units that generate significant heat loads while requiring IP67 environmental protection—a combination that traditionally conflicts with effective cooling strategies.\n\n**Project Scope & Methodology:**\nWe performed comprehensive Conjugate Heat Transfer (CHT) analysis using ANSYS Fluent to simulate the complex interaction between solid conduction paths and natural convection airflow. The simulation domain included the complete enclosure geometry, internal PCB stack-up with component-level power dissipation mapping, and external ambient conditions ranging from -20°C to +55°C.\n\n**Technical Approach:**\n• Conducted steady-state thermal simulations with buoyancy-driven natural convection modeling\n• Optimized external fin geometry using parametric studies on fin height, spacing, and thickness\n• Designed internal thermal interface materials (TIM) placement for optimal heat spreading\n• Validated thermal resistance network from junction to ambient (Rθ-ja)\n\n**Key Results & Achievements:**\n• Reduced CPU junction temperature by 18°C through optimized fin spacing (8mm pitch) and internal conduction paths\n• Achieved reliable operation in 45°C ambient environments with 10°C thermal margin\n• Eliminated active cooling components, reducing BOM cost by 25% and improving MTBF\n• Maintained IP67 sealing integrity while maximizing convective surface area\n\n**Tools & Technologies:** ANSYS Fluent, SolidWorks Flow Simulation, thermal interface material characterization, IR thermography validation",
     image: beforeAfter,
-    imageAlt: "FEA stress analysis visualization",
+    imageAlt: "CFD thermal simulation for electronics cooling",
   },
-  "fea/thermal-management-system": {
-    title: "Thermal Management System",
-    category: "FEA Analysis & CFD",
-    description: "CFD simulation for electronics enclosure cooling with optimized airflow design.",
-    fullDescription: "We designed and validated a thermal management system for a high-power electronics enclosure using Computational Fluid Dynamics. The simulation included conjugate heat transfer analysis, airflow optimization through strategic vent placement, and fan curve integration. The final design achieved a 25°C reduction in peak component temperature while maintaining IP54 ingress protection rating.",
+  "fea/solar-structure-validation": {
+    title: "Solar Structure Engineering Validation",
+    category: "FEA / Structural Safety",
+    description: "Structural integrity validation for a rooftop solar mounting system under cyclonic wind loads (150 km/h). Conducted Static Structural Analysis.",
+    fullDescription: "This project involved comprehensive structural validation of a rooftop solar panel mounting system designed for deployment in cyclone-prone coastal regions. The client required engineering certification to meet AS/NZS 1170.2 wind loading standards for Region C (cyclonic) installations.\n\n**Project Scope & Challenge:**\nThe mounting system needed to withstand sustained wind speeds of 150 km/h with 3-second gust factors, while minimizing material usage and installation complexity. The structure uses galvanized steel components with bolted connections to existing roof purlins.\n\n**Technical Methodology:**\n• Developed detailed FEA model in ANSYS Mechanical with accurate material properties for galvanized steel (AS/NZS 4680)\n• Applied wind pressure distributions per AS/NZS 1170.2 including uplift, drag, and asymmetric loading cases\n• Performed linear static analysis for stress verification and buckling eigenvalue analysis for slender members\n• Evaluated Von-Mises equivalent stress against material Yield Strength (250 MPa) with appropriate safety factors\n\n**Analysis Cases:**\n1. Maximum uplift condition (wind perpendicular to panel face)\n2. Maximum drag condition (wind parallel to panel plane)\n3. Combined dead load + wind load cases per AS/NZS 1170.0 load combinations\n4. Connection reaction forces for anchor bolt sizing\n\n**Key Results & Achievements:**\n• Optimized bracket thickness from 3mm to 2.5mm, reducing weight by 15% while maintaining Safety Factor of 2.0\n• Identified and reinforced critical stress concentration at purlin clamp interface\n• Generated certified engineering drawings with PE stamp for building permit approval\n• Reduced material cost per installation by $45 AUD through optimized design\n\n**Tools & Technologies:** ANSYS Mechanical, SolidWorks Simulation, AS/NZS 1170.2 wind loading calculations, bolted connection analysis per AISC 360",
     image: aerialView,
-    imageAlt: "Thermal simulation results",
+    imageAlt: "FEA structural analysis for solar mounting",
   },
-  "fea/vibration-analysis": {
-    title: "Vibration Analysis",
-    category: "FEA Analysis & CFD",
-    description: "Modal analysis and vibration study for rotating machinery components.",
-    fullDescription: "Comprehensive modal and harmonic response analysis for a high-speed rotating machinery assembly. We identified natural frequencies and mode shapes to prevent resonance conditions during operation. The study included Campbell diagram generation, critical speed analysis, and recommendations for damping improvements that extended component life by 40%.",
+  "fea/cleanroom-ventilation": {
+    title: "Cleanroom Ventilation Strategy",
+    category: "CFD / HVAC Optimization",
+    description: "Airflow distribution simulation for an ISO Class 7 Cleanroom. Analyzed velocity streamlines and pressure gradients to identify dead zones.",
+    fullDescription: "This project delivered CFD-validated HVAC optimization for a pharmaceutical manufacturing cleanroom requiring ISO Class 7 (10,000 particles/ft³) classification. The facility demanded consistent laminar airflow patterns, positive pressure maintenance, and elimination of contamination accumulation zones.\n\n**Project Scope & Requirements:**\nThe 200m² cleanroom required 60-90 air changes per hour (ACH) with unidirectional flow from ceiling-mounted HEPA filters to low-level return grilles. Critical process areas needed velocity uniformity within ±20% of the 0.45 m/s target.\n\n**Technical Methodology:**\n• Created detailed 3D CFD model in ANSYS CFX including all room geometry, equipment, and personnel representations\n• Modeled HEPA filter face velocity profiles and pressure drop characteristics\n• Simulated transient particle transport using discrete phase modeling (DPM) to track contamination pathways\n• Analyzed room pressurization cascade relative to adjacent lower-classification spaces\n\n**Analysis Focus Areas:**\n1. Velocity magnitude and uniformity mapping across work surfaces\n2. Identification of recirculation zones and 'dead spots' where particles could accumulate\n3. Pressure differential verification between cleanroom zones (15 Pa cascade)\n4. Personnel and equipment wake effects on local airflow patterns\n\n**Key Results & Achievements:**\n• Identified three critical 'dead zones' in original design where contaminants could accumulate\n• Relocated two return grilles to eliminate recirculation patterns near workstations\n• Validated HEPA filter placement achieving 95% velocity uniformity in critical zones\n• Confirmed positive pressure maintenance (minimum 12.5 Pa) under door opening transients\n• Optimized supply air volume reducing energy consumption by 18% while maintaining classification\n\n**Tools & Technologies:** ANSYS CFX, discrete phase modeling (DPM), k-ε turbulence modeling, ISO 14644-3 testing protocols, room pressurization analysis",
     image: progressBuilding,
-    imageAlt: "Vibration analysis model",
+    imageAlt: "CFD airflow simulation for cleanroom",
   },
   
   // CAD Projects
-  "cad/industrial-machine-assembly": {
-    title: "Industrial Machine Assembly",
-    category: "CAD Modeling",
-    description: "Complete parametric CAD model with 500+ parts for automated packaging system.",
-    fullDescription: "Full parametric CAD development of an automated packaging system featuring over 500 individual components. The design included conveyor systems, robotic pick-and-place mechanisms, safety guarding, and human-machine interfaces. All components were designed for manufacturability with proper tolerancing, and the assembly included motion simulation to verify clearances and cycle times.",
+  "cad/parametric-automotive-systems": {
+    title: "Parametric Automotive Braking Systems",
+    category: "CAD / Automotive Engineering",
+    description: "Equation-driven master CAD template for high-performance braking systems with patent-defined ratios and tooling-ready outputs.",
+    fullDescription: "This flagship project delivered a generative CAD engine rather than a single static model—a master template architecture for high-performance automotive braking system components that automatically scales geometry based on vehicle class and patent-defined dimensional ratios.\n\n**Project Scope & Innovation:**\nThe client, an automotive Tier-1 supplier, required a design system capable of generating brake pad backing plates, anti-rattle clips, and wear indicator assemblies across 15 vehicle platforms. Traditional approach would require 45+ individual CAD models; our solution reduced this to a single parametric master.\n\n**Technical Architecture:**\n• Developed equation-driven geometry in SolidWorks with 47 linked design parameters\n• Integrated material science calculations directly into CAD environment (Modulus of Elasticity, yield strength, spring constant derivations)\n• Created automated design tables linking vehicle weight class to friction interface area ratios\n• Built rule-based feature suppression for optional components (wear indicators, noise shims)\n\n**Manufacturing Integration:**\n• Tooling outputs optimized for Progressive Die Stamping with automatic bend allowance calculations\n• Integrated GD&T (Geometric Dimensioning and Tolerancing) annotations per ASME Y14.5-2018\n• Generated flat pattern exports with grain direction indicators for material optimization\n• Created automated BOM generation with material grade specifications\n\n**Key Results & Achievements:**\n• Reduced engineering time per new vehicle platform from 3 weeks to 2 days (93% reduction)\n• Eliminated 42 legacy CAD files, replacing with single configurable master\n• Achieved zero tooling revisions on first 5 production launches using this system\n• Anti-rattle mechanism forces calculated within CAD achieving 99.2% correlation with physical testing\n\n**Design Validation:**\n• FEA stress verification linked to parametric model updates\n• Automated clash detection for assembly interference checking\n• Tolerance stack-up analysis integrated into design table outputs\n\n**Tools & Technologies:** SolidWorks with Design Tables, DriveWorks configurator, progressive die simulation, ASME Y14.5-2018 GD&T, automotive PPAP documentation",
     image: blueprints,
-    imageAlt: "CAD assembly model",
+    imageAlt: "Parametric CAD model for automotive braking",
   },
-  "cad/consumer-product-design": {
-    title: "Consumer Product Design",
-    category: "CAD Modeling",
-    description: "Ergonomic product enclosure designed for injection molding with DFM optimization.",
-    fullDescription: "Complete industrial design and CAD modeling of a consumer electronics enclosure. The project involved ergonomic studies, aesthetic surface modeling, and design for injection molding. We optimized wall thicknesses, draft angles, and gate locations to minimize cycle time and ensure consistent part quality. The design achieved a 20% reduction in material usage compared to the original concept.",
+  "cad/pcb-enclosure-design": {
+    title: "IP67 Industrial IoT Gateway Enclosure",
+    category: "CAD / Electronics Packaging",
+    description: "Multi-part injection molding assembly with hygienic design, thermal management, and NEMA 4X environmental sealing.",
+    fullDescription: "This project addressed the challenging intersection of hygienic industrial design and robust electronics packaging—developing an IP67/NEMA 4X-rated enclosure for an Industrial IoT gateway deployed in food processing and pharmaceutical manufacturing environments.\n\n**Project Scope & Requirements:**\nThe enclosure needed to house a high-power (25W) IoT gateway PCB while meeting stringent requirements: IP67 water ingress protection, NEMA 4X corrosion resistance, NSF/ANSI 169 hygienic design compliance, and thermal management without active cooling or external vents.\n\n**Design for Manufacturing (DFM) Approach:**\n• Multi-part assembly optimized for high-volume injection molding (target: 50,000 units/year)\n• Uniform wall thickness (2.5mm nominal) with strategic ribbing to prevent sink marks\n• Tool-safe draft angles (1.5° external, 0.5° internal) for clean part ejection\n• Single-direction mold pull with minimal side actions to reduce tooling cost\n\n**Thermal Management Integration:**\n• Internal mounting bosses with integrated heat-sink interfaces for component-level thermal coupling\n• Thermally conductive enclosure material (PA66+30% GF with thermal additives, k=0.8 W/mK)\n• Strategic internal air gaps for convective circulation within sealed volume\n• External surface texturing for enhanced natural convection\n\n**Sealing Architecture:**\n• Engineered Lip-and-Groove joint geometry for repeatable gasket compression\n• Custom EPDM gasket channel design with calculated compression ratio (15-25%)\n• Cable gland integration with IP68-rated M20 entries\n• Captive fastener design eliminating loose hardware in hygienic environments\n\n**Key Results & Achievements:**\n• Passed IP67 testing (1m immersion, 30 minutes) on first prototype iteration\n• Achieved NSF/ANSI 169 compliance with no crevices or horizontal surfaces for contamination\n• Thermal performance validated: 35°C internal rise at 25W continuous power, 45°C ambient\n• Tooling investment reduced 40% through DFM optimization (eliminated 2 side actions)\n• Unit production cost target achieved ($4.20 at 50K volume)\n\n**Tools & Technologies:** SolidWorks Plastics, Moldflow injection simulation, thermal FEA, IP67/NEMA 4X testing protocols, NSF hygienic design guidelines",
     image: personWorking,
-    imageAlt: "Product design CAD",
+    imageAlt: "PCB enclosure CAD design",
   },
-  "cad/sheet-metal-enclosure": {
-    title: "Sheet Metal Enclosure",
-    category: "CAD Modeling",
-    description: "Complex sheet metal design with proper bend allowances and manufacturing drawings.",
-    fullDescription: "Design of a modular sheet metal enclosure system for industrial control equipment. The project included proper K-factor calculations for various material grades, strategic bend sequencing to avoid tooling interference, and complete manufacturing drawing packages. We also designed custom press-fit hardware integration and EMI shielding provisions.",
+  "cad/sheet-metal-server-rack": {
+    title: "Modular Server Rack & Thermal Cabinet",
+    category: "CAD / Sheet Metal Design",
+    description: "Precision sheet metal assembly with K-Factor calculations for SS304 construction and manufacturing-ready documentation.",
+    fullDescription: "This project delivered a complete modular server rack and thermal management cabinet system for edge computing deployments in industrial environments. The design moved beyond simple bracket fabrication to deliver a complex structural assembly meeting IEC 60297 and EIA-310-D rack standards.\n\n**Project Scope & Specifications:**\n• 42U full-height rack with 600mm × 1000mm footprint\n• 1.5mm Stainless Steel 304 construction for corrosion resistance\n• 500kg static load capacity with seismic Zone 4 compliance\n• Integrated thermal management with forced-air cooling channels\n\n**Sheet Metal Engineering:**\n• Precision K-Factor calculations (0.44 for SS304 at 1.5mm) ensuring accurate flat pattern development\n• Strategic bend sequencing designed to avoid tooling interference on press brake\n• Minimum bend radius optimization (2.4mm inside radius) balancing formability and structural performance\n• Corner relief design preventing material tearing at bend intersections\n\n**Hardware Integration:**\n• PEM self-clinching nuts (CLS-M6-2) for blind-side fastening of internal components\n• Captive fasteners (PFC2-M5-94) for tool-less panel removal during maintenance\n• Multi-point cam latches for industrial security with 10,000-cycle durability rating\n• Integrated cable management with slotted vertical channels and hook-and-loop tie points\n\n**Manufacturing Documentation Package:**\n• Flat Pattern DXF exports with bend line and grain direction annotations\n• Complete Bend Tables with tool selection recommendations\n• Weldment Cut Lists for structural frame members\n• Assembly sequence documentation with torque specifications\n\n**Key Results & Achievements:**\n• First-article inspection passed with zero deviations exceeding tolerance\n• Reduced fabrication time 25% through optimized bend sequencing (6 setups → 4 setups)\n• Achieved 650kg validated load capacity (130% of specification)\n• Seismic qualification testing passed per GR-63-CORE Zone 4 requirements\n• Thermal channel design achieved 15°C reduction in internal ambient vs. sealed enclosure\n\n**Tools & Technologies:** SolidWorks Sheet Metal, flat pattern development, press brake tooling simulation, IEC 60297 compliance, GR-63-CORE seismic analysis",
     image: heroImage,
-    imageAlt: "Sheet metal CAD design",
+    imageAlt: "Sheet metal server rack CAD",
   },
-  "cad/mechanical-linkage-system": {
-    title: "Mechanical Linkage System",
-    category: "CAD Modeling",
-    description: "Kinematic linkage design with motion simulation and interference checking.",
-    fullDescription: "Development of a four-bar linkage mechanism for an automated sorting application. The design process included kinematic synthesis to achieve the required output motion, dynamic simulation to verify forces and accelerations, and interference checking throughout the full range of motion. The final design achieved smooth operation at 120 cycles per minute.",
+  "cad/dfam-actuator-housing": {
+    title: "3D-Printed Robotic Actuator Housing",
+    category: "CAD / DfAM & Product Design",
+    description: "Topology-optimized modular design with print-in-place compliant mechanisms for DfAM innovation.",
+    fullDescription: "This project showcased 'Complexity for Free'—the unique capability of additive manufacturing to produce geometries impossible with traditional manufacturing. We developed a modular robotic actuator housing featuring integrated compliant mechanisms and topology-optimized structures.\n\n**Project Scope & Innovation:**\nThe client required a lightweight, serviceable actuator housing for a collaborative robot arm. Traditional designs used 12 separate machined components with manual assembly. Our DfAM approach consolidated this into 3 printed parts with zero manual assembly.\n\n**Topology Optimization:**\n• Applied generative design algorithms (ANSYS Discovery) to minimize mass while meeting stiffness targets\n• Achieved 40% mass reduction compared to conventional solid-body design\n• Preserved critical mounting interfaces and load paths as 'keep-in' regions\n• Created organic lattice structures for optimal strength-to-weight ratio\n\n**Print-in-Place Compliant Mechanisms:**\n• Integrated living hinges enabling 90° articulation without separate pivot components\n• Designed snap-fit latches that function immediately after printing—no assembly required\n• Created compliant spring elements for cable tensioning and vibration damping\n• Eliminated 8 metal fasteners and 4 assembly operations per unit\n\n**Modular Design Philosophy:**\n• Interlocking interfaces using dovetail geometries for tool-less field servicing\n• Standardized electronics bay dimensions for multiple controller options\n• Quick-swap capability achieving < 5 minute actuator replacement\n• Color-coded functional zones for maintenance guidance\n\n**Material & Process Optimization:**\n• Designed for Multi Jet Fusion (MJF) in PA12 achieving Izod impact strength of 4.5 kJ/m²\n• Optimized wall thicknesses (2.0mm minimum) for consistent powder removal\n• Strategic escape hole placement for internal powder evacuation\n• Surface finish optimization achieving Ra 6.3 μm on functional faces\n\n**Key Results & Achievements:**\n• Reduced part count from 12 components to 3 consolidated prints\n• Eliminated all manual assembly operations (previously 18 minutes per unit)\n• Achieved 40% mass reduction (285g → 171g) with equivalent structural performance\n• Unit cost reduced 35% compared to machined aluminum baseline\n• Field service time reduced from 45 minutes to 5 minutes for actuator replacement\n\n**Tools & Technologies:** ANSYS Discovery generative design, nTopology lattice optimization, HP Multi Jet Fusion (MJF), PA12 material characterization, compliant mechanism design",
     image: featuresImage,
-    imageAlt: "Linkage mechanism CAD",
+    imageAlt: "DfAM robotic actuator CAD",
   },
   
   // Robotics Projects
-  "robotics/autonomous-mobile-robot": {
-    title: "Autonomous Mobile Robot",
-    category: "Robotics Project Development",
-    description: "ROS 2 based AGV with Nav2 navigation stack and custom obstacle avoidance.",
-    fullDescription: "Complete development of an Autonomous Mobile Robot (AMR) for warehouse logistics. The robot runs on ROS 2 Humble with Nav2 for autonomous navigation, including SLAM-based mapping, dynamic path planning, and multi-robot coordination. We integrated LiDAR, depth cameras, and ultrasonic sensors for robust obstacle detection in dynamic environments.",
+  "robotics/bilateral-teleoperation": {
+    title: "6-DOF Bilateral Teleoperation System",
+    category: "Robotics / Control Theory",
+    description: "Master-Slave teleoperation architecture controlling S101 arm in USA from India with real-time kinematic mapping.",
+    fullDescription: "This groundbreaking project demonstrates long-distance precision and low-latency control through a bilateral teleoperation architecture connecting continents in real-time.\n\n**Project Scope & Innovation:**\n\nDevelopment of a 'Master' controller station in India to teleoperate an 'S101' slave robotic arm located in the USA. The system achieves seamless 1:1 motion fidelity despite the 14,000+ km distance, enabling remote industrial manipulation tasks.\n\n**Technical Architecture:**\n\n• 6-DOF haptic master controller with force feedback capability\n• Real-time kinematic mapping ensuring precise motion correspondence\n• Bilateral control loop with position-force hybrid architecture\n• Network jitter compensation and predictive motion algorithms\n\n**Communication Infrastructure:**\n\n• High-speed UDP-based communication protocol with < 50ms round-trip latency\n• ROS2 Humble DDS middleware with QoS tuning for real-time performance\n• Automatic reconnection and graceful degradation on network interruption\n• Encrypted data streams for industrial security compliance\n\n**Key Results & Achievements:**\n\n• Achieved < 100ms end-to-end latency for control loop (India to USA)\n• Motion fidelity correlation of 98.5% between master and slave\n• Successfully demonstrated remote precision assembly tasks\n• Zero safety incidents during 500+ hours of operational testing\n\n**Technical Badges:** [ROS2 Humble] [Kinematics] [Teleoperation] [UDP Protocol]\n\n**Tools & Technologies:** ROS2 Humble, Custom Kinematics Library, WebRTC for video, Force-Torque Sensing, AWS Global Accelerator",
     image: constructionWorkers,
-    imageAlt: "Mobile robot project",
+    imageAlt: "Teleoperation robotics system",
   },
-  "robotics/6-dof-robotic-arm": {
-    title: "6-DOF Robotic Arm",
-    category: "Robotics Project Development",
-    description: "Industrial manipulator with MoveIt integration and custom gripper design.",
-    fullDescription: "Design and integration of a 6-degree-of-freedom robotic manipulator for pick-and-place operations. The project included mechanical design of the arm structure, motor sizing and selection, custom end-effector design, and complete MoveIt 2 integration for motion planning. The system achieved 0.5mm repeatability and supports force-controlled insertion tasks.",
+  "robotics/heavy-payload-amr": {
+    title: "80kg Payload Autonomous Mobile Robot",
+    category: "Robotics / Autonomous Navigation",
+    description: "Heavy-duty AMR with skid-steering drive, Nav2 navigation stack, and LiDAR-based SLAM mapping.",
+    fullDescription: "This project delivers a rugged, high-payload Autonomous Mobile Robot (AMR) designed for demanding industrial material handling applications.\n\n**Project Scope & Specifications:**\n\nDesign and development of a heavy-duty mobile platform capable of sustained 80kg payload transport across industrial floor environments. The robot features complete autonomous navigation with dynamic obstacle avoidance.\n\n**Mechanical Design:**\n\n• High-strength welded steel chassis with 3mm plate construction\n• Skid-steering drive configuration for zero-radius turning capability\n• Four-wheel drive with independent suspension for uneven floor tolerance\n• IP54 rated enclosure for dusty industrial environments\n\n**Drive System:**\n\n• 4× 24V 500W DC brushed motors (2000W total drive power)\n• SmartElex high-current motor drivers with regenerative braking\n• 48V 40Ah LiFePO4 battery pack for 8+ hours continuous operation\n• Emergency stop integration with SIL-2 compliant safety circuits\n\n**Navigation & Control:**\n\n• ROS2 Navigation Stack (Nav2) for autonomous path planning\n• RPLIDAR S2 for 360° obstacle detection and SLAM mapping\n• BNO085 9-DOF IMU with sensor fusion for accurate odometry\n• Costmap-based dynamic obstacle avoidance\n\n**Key Results & Achievements:**\n\n• Validated 80kg payload capacity with < 5% velocity reduction\n• Achieved ±50mm positional accuracy using SLAM-based localization\n• Battery runtime of 10 hours at 50% average payload\n• Successfully deployed in warehouse pilot with 99.2% uptime\n\n**Technical Badges:** [Skid-Steer] [SLAM] [Nav2 Stack] [LiFePO4]\n\n**Tools & Technologies:** ROS2 Humble, Nav2, SLAM Toolbox, SmartElex Drivers, SolidWorks, Gazebo Simulation",
     image: automatedTools,
-    imageAlt: "Robotic arm project",
+    imageAlt: "Heavy payload AMR project",
   },
-  "robotics/vision-guided-pick-place": {
-    title: "Vision-Guided Pick & Place",
-    category: "Robotics Project Development",
-    description: "Computer vision system with object detection for automated sorting application.",
-    fullDescription: "Development of a vision-guided robotic sorting system using deep learning-based object detection. The system uses industrial cameras with custom-trained YOLO models to identify and classify objects on a moving conveyor. Integration with a delta robot enables picking at rates exceeding 60 picks per minute with 99.5% accuracy.",
+  "robotics/smart-actuator": {
+    title: "High-Torque Integrated Smart Actuator",
+    category: "Robotics / Proprietary Tech",
+    description: "Custom servo motor with NEMA 23 stepper, AS5600 encoder, and ESP32-based closed-loop PID control.",
+    fullDescription: "This project demonstrates our capability to build high-performance proprietary components rather than relying on expensive off-the-shelf solutions.\n\n**Project Scope & Innovation:**\n\nDesign and development of a custom integrated smart actuator combining mechanical transmission, sensing, and control electronics into a single compact module. The actuator delivers servo-motor performance at a fraction of commercial servo costs.\n\n**Mechanical Design:**\n\n• NEMA 23 hybrid stepper motor (2.8A, 1.9Nm holding torque)\n• Precision two-stage synchronous belt drive reduction (20:1 ratio)\n• Custom aluminum housing with integrated heat sinking\n• Output shaft with 6807-2RS sealed bearings for radial load capacity\n\n**Sensing & Feedback:**\n\n• AS5600 12-bit absolute magnetic encoder (0.087° resolution)\n• Diametrically magnetized N52 magnet on output shaft\n• Temperature monitoring via NTC thermistor for thermal protection\n• Current sensing for torque estimation and stall detection\n\n**Control Electronics:**\n\n• ESP32-S3 microcontroller running at 240MHz dual-core\n• Custom firmware implementing cascaded PID control loops\n• CAN bus communication for multi-actuator coordination\n• Over-the-air (OTA) firmware update capability\n\n**Performance Specifications:**\n\n• Output torque: 38 Nm continuous, 55 Nm peak\n• Speed range: 0-60 RPM with smooth velocity control\n• Position accuracy: ±0.1° after calibration\n• Response time: < 5ms for step commands\n\n**Key Results & Achievements:**\n\n• Achieved 85% cost reduction vs. equivalent commercial servo\n• Closed-loop control eliminates stepper motor stall failures\n• Successfully integrated into 6-DOF robotic arm prototype\n• 10,000+ hour MTBF validated through accelerated life testing\n\n**Technical Badges:** [Closed-Loop] [Belt-Drive] [ESP32] [CAN Bus]\n\n**Tools & Technologies:** ESP-IDF, AS5600 I2C Interface, TMC2209 Stepper Driver, FreeRTOS, KiCad PCB Design",
     image: constructionImage,
-    imageAlt: "Vision system project",
+    imageAlt: "Custom smart actuator",
   },
   
   // 3D Printing Projects
@@ -170,18 +170,18 @@ const allProjects: Record<string, {
 export function getStaticPaths() {
   return [
     // FEA Projects
-    { params: { category: "fea", slug: "structural-stress-analysis" } },
-    { params: { category: "fea", slug: "thermal-management-system" } },
-    { params: { category: "fea", slug: "vibration-analysis" } },
+    { params: { category: "fea", slug: "ip67-passive-cooling" } },
+    { params: { category: "fea", slug: "solar-structure-validation" } },
+    { params: { category: "fea", slug: "cleanroom-ventilation" } },
     // CAD Projects
-    { params: { category: "cad", slug: "industrial-machine-assembly" } },
-    { params: { category: "cad", slug: "consumer-product-design" } },
-    { params: { category: "cad", slug: "sheet-metal-enclosure" } },
-    { params: { category: "cad", slug: "mechanical-linkage-system" } },
+    { params: { category: "cad", slug: "parametric-automotive-systems" } },
+    { params: { category: "cad", slug: "pcb-enclosure-design" } },
+    { params: { category: "cad", slug: "sheet-metal-server-rack" } },
+    { params: { category: "cad", slug: "dfam-actuator-housing" } },
     // Robotics Projects
-    { params: { category: "robotics", slug: "autonomous-mobile-robot" } },
-    { params: { category: "robotics", slug: "6-dof-robotic-arm" } },
-    { params: { category: "robotics", slug: "vision-guided-pick-place" } },
+    { params: { category: "robotics", slug: "bilateral-teleoperation" } },
+    { params: { category: "robotics", slug: "heavy-payload-amr" } },
+    { params: { category: "robotics", slug: "smart-actuator" } },
     // 3D Printing Projects
     { params: { category: "3d-printing", slug: "functional-prototype" } },
     { params: { category: "3d-printing", slug: "production-tooling" } },
@@ -249,14 +249,49 @@ const pageTitle = `${project.title} | ${SITE.title}`;
         />
       </div>
 
-      <!-- Full Description -->
-      <div class="mt-10">
-        <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+      <!-- Full Description with Formatting -->
+      <div class="mt-10 prose prose-lg prose-neutral dark:prose-invert max-w-none">
+        <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-6">
           Project Details
         </h2>
-        <p class="mt-4 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-          {project.fullDescription}
-        </p>
+        <div class="space-y-6">
+          {project.fullDescription.split('\n\n').map((section: string) => {
+            // Check if section is a heading (starts with **)
+            if (section.startsWith('**') && section.includes(':**')) {
+              const headingText = section.replace(/\*\*/g, '').replace(':', '');
+              return (
+                <h3 class="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mt-8 mb-4 border-l-4 border-orange-500 pl-4">
+                  {headingText}
+                </h3>
+              );
+            }
+            // Check if section contains bullet points
+            else if (section.includes('•') || section.includes('1.')) {
+              const items = section.split('\n').filter((line: string) => line.trim());
+              return (
+                <ul class="space-y-3 ml-4">
+                  {items.map((item: string) => {
+                    const cleanItem = item.replace(/^[•\d.]\s*/, '').trim();
+                    return (
+                      <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-orange-500"></span>
+                        <span>{cleanItem}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            }
+            // Regular paragraph
+            else {
+              return (
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {section}
+                </p>
+              );
+            }
+          })}
+        </div>
       </div>
 
       <!-- CTA Section -->
